@@ -1,14 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { useStore } from "exome/react";
-import {
-  CaseSensitive,
-  ListOrdered,
-  Minus,
-  Settings2,
-  Type,
-} from "lucide-react";
+import { CaseSensitive, Minus, Settings2 } from "lucide-react";
 import { uuidStore } from "../uuid.store";
+import { Switch } from "@/components/ui/switch";
 import {
   Select,
   SelectContent,
@@ -16,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
 
 export function Configuration() {
   const { config, updateConfig } = useStore(uuidStore);
