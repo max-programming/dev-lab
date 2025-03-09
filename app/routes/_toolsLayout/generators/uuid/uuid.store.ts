@@ -16,6 +16,11 @@ export class UUIDStore extends Exome {
     uuidVersion: 4,
   };
 
+  constructor() {
+    super();
+    this.generateUUIDs();
+  }
+
   public setUUIDCount(uuidCount: number) {
     this.uuidCount = uuidCount;
     this.generateUUIDs();
