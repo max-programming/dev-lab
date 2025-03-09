@@ -31,11 +31,12 @@ DevLab is a comprehensive set of tools for developers accessible directly from y
 DevLab includes various tools categorized for different needs:
 
 ### Converters
-- 🕒 CRON Expression Parser - Parse cron expressions to get scheduled dates
+- [🕒 CRON Expression Parser - Parse cron expressions to get scheduled dates](https://devlab.usmans.me/converters/cron-parser)
+- [🗂️ JSON to YAML Converter - Convert JSON data to YAML format and vice versa](https://devlab.usmans.me/converters/json-yaml)
 - _More converters coming soon!_
 
 ### Generators
-- 🆔 UUID Generator - Generate various UUID/GUID formats (v1, v4, v7)
+- [🆔 UUID Generator - Generate various UUID/GUID formats (v1, v4, v7)](https://devlab.usmans.me/generators/uuid)
 - _More generators coming soon!_
 
 *More tools are being added regularly!*
