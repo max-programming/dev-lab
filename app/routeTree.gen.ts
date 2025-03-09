@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as toolsLayoutRouteImport } from './routes/_toolsLayout/route'
+import { Route as toolsLayoutGeneratorsUuidRouteImport } from './routes/_toolsLayout/generators/uuid/route'
 import { Route as toolsLayoutConvertersCronParserRouteImport } from './routes/_toolsLayout/converters/cron-parser/route'
 
 // Create/Update Routes
@@ -27,6 +28,13 @@ const toolsLayoutRouteRoute = toolsLayoutRouteImport.update({
   id: '/_toolsLayout/_route',
   getParentRoute: () => rootRoute,
 } as any)
+
+const toolsLayoutGeneratorsUuidRouteRoute =
+  toolsLayoutGeneratorsUuidRouteImport.update({
+    id: '/generators/uuid',
+    path: '/generators/uuid',
+    getParentRoute: () => toolsLayoutRouteRoute,
+  } as any)
 
 const toolsLayoutConvertersCronParserRouteRoute =
   toolsLayoutConvertersCronParserRouteImport.update({
@@ -60,6 +68,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof toolsLayoutConvertersCronParserRouteImport
       parentRoute: typeof toolsLayoutRouteImport
     }
+    '/_toolsLayout/_route/generators/uuid': {
+      id: '/_toolsLayout/_route/generators/uuid'
+      path: '/generators/uuid'
+      fullPath: '/generators/uuid'
+      preLoaderRoute: typeof toolsLayoutGeneratorsUuidRouteImport
+      parentRoute: typeof toolsLayoutRouteImport
+    }
   }
 }
 
@@ -67,11 +82,13 @@ declare module '@tanstack/react-router' {
 
 interface toolsLayoutRouteRouteChildren {
   toolsLayoutConvertersCronParserRouteRoute: typeof toolsLayoutConvertersCronParserRouteRoute
+  toolsLayoutGeneratorsUuidRouteRoute: typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
 const toolsLayoutRouteRouteChildren: toolsLayoutRouteRouteChildren = {
   toolsLayoutConvertersCronParserRouteRoute:
     toolsLayoutConvertersCronParserRouteRoute,
+  toolsLayoutGeneratorsUuidRouteRoute: toolsLayoutGeneratorsUuidRouteRoute,
 }
 
 const toolsLayoutRouteRouteWithChildren =
@@ -81,12 +98,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof toolsLayoutRouteRouteWithChildren
   '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
+  '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof toolsLayoutRouteRouteWithChildren
   '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
+  '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
 export interface FileRoutesById {
@@ -94,18 +113,20 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_toolsLayout/_route': typeof toolsLayoutRouteRouteWithChildren
   '/_toolsLayout/_route/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
+  '/_toolsLayout/_route/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/converters/cron-parser'
+  fullPaths: '/' | '' | '/converters/cron-parser' | '/generators/uuid'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/converters/cron-parser'
+  to: '/' | '' | '/converters/cron-parser' | '/generators/uuid'
   id:
     | '__root__'
     | '/'
     | '/_toolsLayout/_route'
     | '/_toolsLayout/_route/converters/cron-parser'
+    | '/_toolsLayout/_route/generators/uuid'
   fileRoutesById: FileRoutesById
 }
 
@@ -139,11 +160,16 @@ export const routeTree = rootRoute
     "/_toolsLayout/_route": {
       "filePath": "_toolsLayout/route.tsx",
       "children": [
-        "/_toolsLayout/_route/converters/cron-parser"
+        "/_toolsLayout/_route/converters/cron-parser",
+        "/_toolsLayout/_route/generators/uuid"
       ]
     },
     "/_toolsLayout/_route/converters/cron-parser": {
       "filePath": "_toolsLayout/converters/cron-parser/route.tsx",
+      "parent": "/_toolsLayout/_route"
+    },
+    "/_toolsLayout/_route/generators/uuid": {
+      "filePath": "_toolsLayout/generators/uuid/route.tsx",
       "parent": "/_toolsLayout/_route"
     }
   }

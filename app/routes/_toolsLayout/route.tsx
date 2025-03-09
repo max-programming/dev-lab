@@ -1,11 +1,12 @@
-import { tools } from "@/lib/tools";
+import { tools, type ToolName } from "@/lib/tools";
 import { createFileRoute, notFound, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_toolsLayout/_route")({
   component: ToolsLayoutComponent,
   loader(ctx) {
+    const toolGroup = ctx.location.pathname.split("/").at(-2) as ToolName;
     const toolPathname = ctx.location.pathname.split("/").at(-1);
-    const tool = tools.converters.find(tool => tool.pathname === toolPathname);
+    const tool = tools[toolGroup].find(tool => tool.pathname === toolPathname);
     if (!tool) throw notFound();
     return { tool };
   },

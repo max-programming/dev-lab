@@ -34,4 +34,12 @@ export const tools = {
     //   description: "Convert numbers from one base to another",
     // },
   ],
+  generators: [
+    {
+      shortTitle: "UUID",
+      title: "UUID Generator",
+      pathname: "uuid",
+      description: "Generate UUIDs verstion 1, 4 (GUID) and 7",
+    },
+  ],
 } as const;
