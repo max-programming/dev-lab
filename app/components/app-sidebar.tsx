@@ -26,8 +26,21 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader />
+      <SidebarHeader>
+        <h1 className="text-xl font-bold px-4 py-2">DevLab</h1>
+      </SidebarHeader>
       <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/"}>
+                  <Link to="/">All Tools</Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         {sidebarGroups.map(group => (
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroup key={group}>

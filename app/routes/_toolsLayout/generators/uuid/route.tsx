@@ -8,6 +8,7 @@ function UUIDGeneratorPage() {
   return (
     <div id="uuid-generator" className="flex flex-col gap-y-5 h-full">
       <h1>UUID Generator</h1>
+      <i>WIP</i>
     </div>
   );
 }
