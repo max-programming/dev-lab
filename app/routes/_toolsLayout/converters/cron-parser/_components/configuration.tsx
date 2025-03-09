@@ -1,8 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
 import { useStore } from "exome/react";
-import { ArrowRightLeft, ListOrdered, Type } from "lucide-react";
+import { ListOrdered, Type } from "lucide-react";
 import { cronParserStore } from "../cron-parser.store";
 import {
   Select,
@@ -19,24 +18,6 @@ export function Configuration() {
     <section>
       <h3 className="text-lg font-semibold">Configuration</h3>
       <div className="mt-2 flex flex-col space-y-2">
-        <Card>
-          <CardContent className="flex items-center space-x-4">
-            <ArrowRightLeft size={24} />
-            <div className="flex-1">
-              <h4 className="font-semibold">Include seconds</h4>
-              <p>
-                Whether the Cron expression should include seconds in its
-                definition
-              </p>
-            </div>
-            <Switch
-              checked={config.includeSeconds}
-              onCheckedChange={checked =>
-                updateConfig({ includeSeconds: checked })
-              }
-            />
-          </CardContent>
-        </Card>
         <Card>
           <CardContent className="flex items-center space-x-4">
             <ListOrdered size={24} />

@@ -8,7 +8,6 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 dayjs.extend(advancedFormat);
 
 interface Configuration {
-  includeSeconds: boolean;
   numberOfDates: number;
   outputFormat: string;
 }
@@ -18,7 +17,6 @@ export class CronParserStore extends Exome {
   public cronDescription = "";
   public nextScheduledDates = "";
   public config: Configuration = {
-    includeSeconds: true,
     numberOfDates: 5,
     outputFormat: "YYYY-MM-DD HH:mm:ss",
   };
