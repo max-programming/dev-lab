@@ -15,10 +15,11 @@ function ToolsLayoutComponent() {
   const { tool } = Route.useLoaderData();
 
   return (
-    <div>
-      <h1>{tool.title}</h1>
-      <p>{tool.description || "Details about the tool can go here."}</p>
-      <Outlet />
+    <div className="p-4">
+      <h1 className="text-3xl font-bold">{tool.title}</h1>
+      <div className="mt-4">
+        <Outlet />
+      </div>
     </div>
   );
 }

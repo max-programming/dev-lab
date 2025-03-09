@@ -10,7 +10,10 @@ export default defineVirtualSubtreeConfig([
     "route.tsx",
     Object.entries(tools).flatMap(([group, tools]) =>
       tools.map(tool =>
-        route(`/${group}/${tool.pathname}`, `/${group}/${tool.pathname}.tsx`)
+        route(
+          `/${group}/${tool.pathname}`,
+          `/${group}/${tool.pathname}/route.tsx`
+        )
       )
     )
   ),

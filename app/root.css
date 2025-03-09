@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
 @import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
@@ -73,6 +74,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme {
+  --font-geist-mono: "Geist Mono", monospace;
 }
 
 @theme inline {

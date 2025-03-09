@@ -11,11 +11,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "./ui/sidebar";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 
 const sidebarGroups = Object.keys(tools) as ToolName[];
 
 export function AppSidebar() {
+  const pathname = useLocation({ select: l => l.pathname });
+
   return (
     <Sidebar>
       <SidebarHeader />
@@ -27,15 +29,16 @@ export function AppSidebar() {
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {tools[group].map(tool => (
-                  <SidebarMenuItem key={tool.pathname}>
-                    <SidebarMenuButton asChild>
-                      <Link to={`/${group}/${tool.pathname}`}>
-                        {tool.shortTitle}
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
+                {tools[group].map(tool => {
+                  const toPath = `/${group}/${tool.pathname}`;
+                  return (
+                    <SidebarMenuItem key={tool.pathname}>
+                      <SidebarMenuButton asChild isActive={toPath === pathname}>
+                        <Link to={toPath}>{tool.shortTitle}</Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

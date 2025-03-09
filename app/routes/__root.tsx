@@ -45,8 +45,8 @@ function RootDocument({ children }: PropsWithChildren) {
       <body>
         <SidebarProvider>
           <AppSidebar />
-          <main>
-            <SidebarTrigger />
+          <main className="w-full">
+            {/* <SidebarTrigger /> */}
             {children}
           </main>
           <Scripts />
