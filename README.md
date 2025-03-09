@@ -42,10 +42,6 @@ DevLab includes various tools categorized for different needs:
 
 ## Getting Started
 
-### Prerequisites
-
-- [Bun](https://bun.sh/) version 1.2.4 or higher
-
 ### Installation
 
 Clone the repository and install the dependencies:
