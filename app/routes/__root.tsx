@@ -24,6 +24,7 @@ export const Route = createRootRoute({
       },
     ],
     links: [{ rel: "stylesheet", href: rootCss }],
+    scripts: [{ defer: true, src: "https://cloud.umami.is/script.js", "data-website-id": "df87b939-9d54-4876-ac35-30f13db81960" }],
   }),
   component: RootComponent,
 });
