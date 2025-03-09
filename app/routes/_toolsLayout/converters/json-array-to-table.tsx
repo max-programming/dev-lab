@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/(tools)/converters/json-array-to-table')(
+export const Route = createFileRoute('/_toolsLayout/_route/converters/json-array-to-table')(
   {
     component: RouteComponent,
   },

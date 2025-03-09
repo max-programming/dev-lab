@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/(tools)/converters/json-yaml")({
+export const Route = createFileRoute("/_toolsLayout/_route/converters/json-yaml")({
   component: RouteComponent,
 });
 

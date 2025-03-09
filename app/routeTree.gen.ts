@@ -12,11 +12,12 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as toolsConvertersNumberBaseImport } from './routes/(tools)/converters/number-base'
-import { Route as toolsConvertersJsonYamlImport } from './routes/(tools)/converters/json-yaml'
-import { Route as toolsConvertersJsonArrayToTableImport } from './routes/(tools)/converters/json-array-to-table'
-import { Route as toolsConvertersDateImport } from './routes/(tools)/converters/date'
-import { Route as toolsConvertersCronParserImport } from './routes/(tools)/converters/cron-parser'
+import { Route as toolsLayoutRouteImport } from './routes/_toolsLayout/route'
+import { Route as toolsLayoutConvertersNumberBaseImport } from './routes/_toolsLayout/converters/number-base'
+import { Route as toolsLayoutConvertersJsonYamlImport } from './routes/_toolsLayout/converters/json-yaml'
+import { Route as toolsLayoutConvertersJsonArrayToTableImport } from './routes/_toolsLayout/converters/json-array-to-table'
+import { Route as toolsLayoutConvertersDateImport } from './routes/_toolsLayout/converters/date'
+import { Route as toolsLayoutConvertersCronParserImport } from './routes/_toolsLayout/converters/cron-parser'
 
 // Create/Update Routes
 
@@ -26,36 +27,44 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const toolsConvertersNumberBaseRoute = toolsConvertersNumberBaseImport.update({
-  id: '/(tools)/converters/number-base',
-  path: '/converters/number-base',
+const toolsLayoutRouteRoute = toolsLayoutRouteImport.update({
+  id: '/_toolsLayout/_route',
   getParentRoute: () => rootRoute,
 } as any)
 
-const toolsConvertersJsonYamlRoute = toolsConvertersJsonYamlImport.update({
-  id: '/(tools)/converters/json-yaml',
-  path: '/converters/json-yaml',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const toolsConvertersJsonArrayToTableRoute =
-  toolsConvertersJsonArrayToTableImport.update({
-    id: '/(tools)/converters/json-array-to-table',
-    path: '/converters/json-array-to-table',
-    getParentRoute: () => rootRoute,
+const toolsLayoutConvertersNumberBaseRoute =
+  toolsLayoutConvertersNumberBaseImport.update({
+    id: '/converters/number-base',
+    path: '/converters/number-base',
+    getParentRoute: () => toolsLayoutRouteRoute,
   } as any)
 
-const toolsConvertersDateRoute = toolsConvertersDateImport.update({
-  id: '/(tools)/converters/date',
+const toolsLayoutConvertersJsonYamlRoute =
+  toolsLayoutConvertersJsonYamlImport.update({
+    id: '/converters/json-yaml',
+    path: '/converters/json-yaml',
+    getParentRoute: () => toolsLayoutRouteRoute,
+  } as any)
+
+const toolsLayoutConvertersJsonArrayToTableRoute =
+  toolsLayoutConvertersJsonArrayToTableImport.update({
+    id: '/converters/json-array-to-table',
+    path: '/converters/json-array-to-table',
+    getParentRoute: () => toolsLayoutRouteRoute,
+  } as any)
+
+const toolsLayoutConvertersDateRoute = toolsLayoutConvertersDateImport.update({
+  id: '/converters/date',
   path: '/converters/date',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => toolsLayoutRouteRoute,
 } as any)
 
-const toolsConvertersCronParserRoute = toolsConvertersCronParserImport.update({
-  id: '/(tools)/converters/cron-parser',
-  path: '/converters/cron-parser',
-  getParentRoute: () => rootRoute,
-} as any)
+const toolsLayoutConvertersCronParserRoute =
+  toolsLayoutConvertersCronParserImport.update({
+    id: '/converters/cron-parser',
+    path: '/converters/cron-parser',
+    getParentRoute: () => toolsLayoutRouteRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -68,78 +77,109 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/(tools)/converters/cron-parser': {
-      id: '/(tools)/converters/cron-parser'
+    '/_toolsLayout/_route': {
+      id: '/_toolsLayout/_route'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof toolsLayoutRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/_toolsLayout/_route/converters/cron-parser': {
+      id: '/_toolsLayout/_route/converters/cron-parser'
       path: '/converters/cron-parser'
       fullPath: '/converters/cron-parser'
-      preLoaderRoute: typeof toolsConvertersCronParserImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof toolsLayoutConvertersCronParserImport
+      parentRoute: typeof toolsLayoutRouteImport
     }
-    '/(tools)/converters/date': {
-      id: '/(tools)/converters/date'
+    '/_toolsLayout/_route/converters/date': {
+      id: '/_toolsLayout/_route/converters/date'
       path: '/converters/date'
       fullPath: '/converters/date'
-      preLoaderRoute: typeof toolsConvertersDateImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof toolsLayoutConvertersDateImport
+      parentRoute: typeof toolsLayoutRouteImport
     }
-    '/(tools)/converters/json-array-to-table': {
-      id: '/(tools)/converters/json-array-to-table'
+    '/_toolsLayout/_route/converters/json-array-to-table': {
+      id: '/_toolsLayout/_route/converters/json-array-to-table'
       path: '/converters/json-array-to-table'
       fullPath: '/converters/json-array-to-table'
-      preLoaderRoute: typeof toolsConvertersJsonArrayToTableImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof toolsLayoutConvertersJsonArrayToTableImport
+      parentRoute: typeof toolsLayoutRouteImport
     }
-    '/(tools)/converters/json-yaml': {
-      id: '/(tools)/converters/json-yaml'
+    '/_toolsLayout/_route/converters/json-yaml': {
+      id: '/_toolsLayout/_route/converters/json-yaml'
       path: '/converters/json-yaml'
       fullPath: '/converters/json-yaml'
-      preLoaderRoute: typeof toolsConvertersJsonYamlImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof toolsLayoutConvertersJsonYamlImport
+      parentRoute: typeof toolsLayoutRouteImport
     }
-    '/(tools)/converters/number-base': {
-      id: '/(tools)/converters/number-base'
+    '/_toolsLayout/_route/converters/number-base': {
+      id: '/_toolsLayout/_route/converters/number-base'
       path: '/converters/number-base'
       fullPath: '/converters/number-base'
-      preLoaderRoute: typeof toolsConvertersNumberBaseImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof toolsLayoutConvertersNumberBaseImport
+      parentRoute: typeof toolsLayoutRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface toolsLayoutRouteRouteChildren {
+  toolsLayoutConvertersCronParserRoute: typeof toolsLayoutConvertersCronParserRoute
+  toolsLayoutConvertersDateRoute: typeof toolsLayoutConvertersDateRoute
+  toolsLayoutConvertersJsonArrayToTableRoute: typeof toolsLayoutConvertersJsonArrayToTableRoute
+  toolsLayoutConvertersJsonYamlRoute: typeof toolsLayoutConvertersJsonYamlRoute
+  toolsLayoutConvertersNumberBaseRoute: typeof toolsLayoutConvertersNumberBaseRoute
+}
+
+const toolsLayoutRouteRouteChildren: toolsLayoutRouteRouteChildren = {
+  toolsLayoutConvertersCronParserRoute: toolsLayoutConvertersCronParserRoute,
+  toolsLayoutConvertersDateRoute: toolsLayoutConvertersDateRoute,
+  toolsLayoutConvertersJsonArrayToTableRoute:
+    toolsLayoutConvertersJsonArrayToTableRoute,
+  toolsLayoutConvertersJsonYamlRoute: toolsLayoutConvertersJsonYamlRoute,
+  toolsLayoutConvertersNumberBaseRoute: toolsLayoutConvertersNumberBaseRoute,
+}
+
+const toolsLayoutRouteRouteWithChildren =
+  toolsLayoutRouteRoute._addFileChildren(toolsLayoutRouteRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/converters/cron-parser': typeof toolsConvertersCronParserRoute
-  '/converters/date': typeof toolsConvertersDateRoute
-  '/converters/json-array-to-table': typeof toolsConvertersJsonArrayToTableRoute
-  '/converters/json-yaml': typeof toolsConvertersJsonYamlRoute
-  '/converters/number-base': typeof toolsConvertersNumberBaseRoute
+  '': typeof toolsLayoutRouteRouteWithChildren
+  '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRoute
+  '/converters/date': typeof toolsLayoutConvertersDateRoute
+  '/converters/json-array-to-table': typeof toolsLayoutConvertersJsonArrayToTableRoute
+  '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRoute
+  '/converters/number-base': typeof toolsLayoutConvertersNumberBaseRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/converters/cron-parser': typeof toolsConvertersCronParserRoute
-  '/converters/date': typeof toolsConvertersDateRoute
-  '/converters/json-array-to-table': typeof toolsConvertersJsonArrayToTableRoute
-  '/converters/json-yaml': typeof toolsConvertersJsonYamlRoute
-  '/converters/number-base': typeof toolsConvertersNumberBaseRoute
+  '': typeof toolsLayoutRouteRouteWithChildren
+  '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRoute
+  '/converters/date': typeof toolsLayoutConvertersDateRoute
+  '/converters/json-array-to-table': typeof toolsLayoutConvertersJsonArrayToTableRoute
+  '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRoute
+  '/converters/number-base': typeof toolsLayoutConvertersNumberBaseRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/(tools)/converters/cron-parser': typeof toolsConvertersCronParserRoute
-  '/(tools)/converters/date': typeof toolsConvertersDateRoute
-  '/(tools)/converters/json-array-to-table': typeof toolsConvertersJsonArrayToTableRoute
-  '/(tools)/converters/json-yaml': typeof toolsConvertersJsonYamlRoute
-  '/(tools)/converters/number-base': typeof toolsConvertersNumberBaseRoute
+  '/_toolsLayout/_route': typeof toolsLayoutRouteRouteWithChildren
+  '/_toolsLayout/_route/converters/cron-parser': typeof toolsLayoutConvertersCronParserRoute
+  '/_toolsLayout/_route/converters/date': typeof toolsLayoutConvertersDateRoute
+  '/_toolsLayout/_route/converters/json-array-to-table': typeof toolsLayoutConvertersJsonArrayToTableRoute
+  '/_toolsLayout/_route/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRoute
+  '/_toolsLayout/_route/converters/number-base': typeof toolsLayoutConvertersNumberBaseRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | ''
     | '/converters/cron-parser'
     | '/converters/date'
     | '/converters/json-array-to-table'
@@ -148,6 +188,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | ''
     | '/converters/cron-parser'
     | '/converters/date'
     | '/converters/json-array-to-table'
@@ -156,30 +197,23 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/(tools)/converters/cron-parser'
-    | '/(tools)/converters/date'
-    | '/(tools)/converters/json-array-to-table'
-    | '/(tools)/converters/json-yaml'
-    | '/(tools)/converters/number-base'
+    | '/_toolsLayout/_route'
+    | '/_toolsLayout/_route/converters/cron-parser'
+    | '/_toolsLayout/_route/converters/date'
+    | '/_toolsLayout/_route/converters/json-array-to-table'
+    | '/_toolsLayout/_route/converters/json-yaml'
+    | '/_toolsLayout/_route/converters/number-base'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  toolsConvertersCronParserRoute: typeof toolsConvertersCronParserRoute
-  toolsConvertersDateRoute: typeof toolsConvertersDateRoute
-  toolsConvertersJsonArrayToTableRoute: typeof toolsConvertersJsonArrayToTableRoute
-  toolsConvertersJsonYamlRoute: typeof toolsConvertersJsonYamlRoute
-  toolsConvertersNumberBaseRoute: typeof toolsConvertersNumberBaseRoute
+  toolsLayoutRouteRoute: typeof toolsLayoutRouteRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  toolsConvertersCronParserRoute: toolsConvertersCronParserRoute,
-  toolsConvertersDateRoute: toolsConvertersDateRoute,
-  toolsConvertersJsonArrayToTableRoute: toolsConvertersJsonArrayToTableRoute,
-  toolsConvertersJsonYamlRoute: toolsConvertersJsonYamlRoute,
-  toolsConvertersNumberBaseRoute: toolsConvertersNumberBaseRoute,
+  toolsLayoutRouteRoute: toolsLayoutRouteRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -193,30 +227,41 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/(tools)/converters/cron-parser",
-        "/(tools)/converters/date",
-        "/(tools)/converters/json-array-to-table",
-        "/(tools)/converters/json-yaml",
-        "/(tools)/converters/number-base"
+        "/_toolsLayout/_route"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/(tools)/converters/cron-parser": {
-      "filePath": "(tools)/converters/cron-parser.tsx"
+    "/_toolsLayout/_route": {
+      "filePath": "_toolsLayout/route.tsx",
+      "children": [
+        "/_toolsLayout/_route/converters/cron-parser",
+        "/_toolsLayout/_route/converters/date",
+        "/_toolsLayout/_route/converters/json-array-to-table",
+        "/_toolsLayout/_route/converters/json-yaml",
+        "/_toolsLayout/_route/converters/number-base"
+      ]
     },
-    "/(tools)/converters/date": {
-      "filePath": "(tools)/converters/date.tsx"
+    "/_toolsLayout/_route/converters/cron-parser": {
+      "filePath": "_toolsLayout/converters/cron-parser.tsx",
+      "parent": "/_toolsLayout/_route"
     },
-    "/(tools)/converters/json-array-to-table": {
-      "filePath": "(tools)/converters/json-array-to-table.tsx"
+    "/_toolsLayout/_route/converters/date": {
+      "filePath": "_toolsLayout/converters/date.tsx",
+      "parent": "/_toolsLayout/_route"
     },
-    "/(tools)/converters/json-yaml": {
-      "filePath": "(tools)/converters/json-yaml.tsx"
+    "/_toolsLayout/_route/converters/json-array-to-table": {
+      "filePath": "_toolsLayout/converters/json-array-to-table.tsx",
+      "parent": "/_toolsLayout/_route"
     },
-    "/(tools)/converters/number-base": {
-      "filePath": "(tools)/converters/number-base.tsx"
+    "/_toolsLayout/_route/converters/json-yaml": {
+      "filePath": "_toolsLayout/converters/json-yaml.tsx",
+      "parent": "/_toolsLayout/_route"
+    },
+    "/_toolsLayout/_route/converters/number-base": {
+      "filePath": "_toolsLayout/converters/number-base.tsx",
+      "parent": "/_toolsLayout/_route"
     }
   }
 }

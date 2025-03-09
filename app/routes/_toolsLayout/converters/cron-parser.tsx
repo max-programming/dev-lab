@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/(tools)/converters/date")({
+export const Route = createFileRoute(
+  "/_toolsLayout/_route/converters/cron-parser"
+)({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  return <div>Hello "/(tools)/converters/date"!</div>;
+  return <div></div>;
 }
