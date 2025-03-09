@@ -53,8 +53,8 @@ export function Configuration() {
           <CardContent className="flex items-center space-x-4">
             <Settings2 size={24} />
             <div className="flex-1">
-              <h4 className="font-semibold">Next scheduled dates</h4>
-              <p>How many scheduled dates needs to be generated</p>
+              <h4 className="font-semibold">UUID Version</h4>
+              <p>Choose the version of UUID to generate</p>
             </div>
             <Select
               value={String(config.uuidVersion)}
