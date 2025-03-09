@@ -21,6 +21,7 @@
         "cronstrue": "^2.56.0",
         "dayjs": "^1.11.13",
         "exome": "^2.8.0",
+        "js-yaml": "^4.1.0",
         "lucide-react": "^0.479.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
@@ -32,6 +33,7 @@
       },
       "devDependencies": {
         "@types/bun": "latest",
+        "@types/js-yaml": "^4.0.9",
         "@types/react": "^19.0.10",
         "@types/react-dom": "^19.0.4",
         "@vitejs/plugin-react": "^4.3.4",
@@ -436,6 +438,8 @@
     "@types/estree": ["@types/estree@1.0.6", "", {}, "sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw=="],
 
     "@types/http-proxy": ["@types/http-proxy@1.17.16", "", { "dependencies": { "@types/node": "*" } }, "sha512-sdWoUajOB1cd0A8cRRQ1cfyWNbmFKLAqBB89Y8x5iYyG/mkJHc0YUH8pdWBy2omi9qtCpiIgGjuwO0dQST2l5w=="],
+
+    "@types/js-yaml": ["@types/js-yaml@4.0.9", "", {}, "sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg=="],
 
     "@types/micromatch": ["@types/micromatch@4.0.9", "", { "dependencies": { "@types/braces": "*" } }, "sha512-7V+8ncr22h4UoYRLnLXSpTxjQrNUXtWHGeMPRJt1nULXI57G9bIcpyrHlmrQ7QK24EyyuXvYcSSWAM8GA9nqCg=="],
 

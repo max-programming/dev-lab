@@ -21,12 +21,12 @@ export const tools = {
     //   description:
     //     "Convert a JSON array to tabular format, export to CSV or TSV",
     // },
-    // {
-    //   shortTitle: "JSON <> YAML",
-    //   title: "JSON <> YAML Converter",
-    //   pathname: "json-yaml",
-    //   description: "Convert JSON data to YAML and vice versa",
-    // },
+    {
+      shortTitle: "JSON <> YAML",
+      title: "JSON <> YAML Converter",
+      pathname: "json-yaml",
+      description: "Convert JSON data to YAML and vice versa",
+    },
     // {
     //   shortTitle: "Number Base",
     //   title: "Number Base Converter",

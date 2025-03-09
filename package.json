@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/js-yaml": "^4.0.9",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
@@ -36,6 +37,7 @@
     "cronstrue": "^2.56.0",
     "dayjs": "^1.11.13",
     "exome": "^2.8.0",
+    "js-yaml": "^4.1.0",
     "lucide-react": "^0.479.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

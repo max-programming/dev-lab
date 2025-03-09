@@ -10,6 +10,17 @@ export const Route = createFileRoute("/_toolsLayout/_route")({
     if (!tool) throw notFound();
     return { tool };
   },
+  head(ctx) {
+    const { tool } = ctx.loaderData;
+    return {
+      meta: [
+        {
+          title: `${tool.title} | DevLab`,
+          description: tool.description,
+        },
+      ],
+    };
+  },
 });
 
 function ToolsLayoutComponent() {
