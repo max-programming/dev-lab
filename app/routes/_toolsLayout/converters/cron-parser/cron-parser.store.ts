@@ -7,7 +7,7 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 
 dayjs.extend(advancedFormat);
 
-interface Configuration {
+interface Config {
   numberOfDates: number;
   outputFormat: string;
 }
@@ -16,7 +16,7 @@ export class CronParserStore extends Exome {
   public cronExpression = "* * * * * *";
   public cronDescription = "";
   public nextScheduledDates = "";
-  public config: Configuration = {
+  public config: Config = {
     numberOfDates: 5,
     outputFormat: "YYYY-MM-DD HH:mm:ss",
   };
@@ -28,7 +28,7 @@ export class CronParserStore extends Exome {
     this.parseCronExpression();
   }
 
-  public updateConfig(config: Partial<Configuration>) {
+  public updateConfig(config: Partial<Config>) {
     this.config = { ...this.config, ...config };
     this.parseCronExpression();
   }
