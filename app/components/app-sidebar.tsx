@@ -31,7 +31,7 @@ export function AppSidebar() {
                   <SidebarMenuItem key={tool.pathname}>
                     <SidebarMenuButton asChild>
                       <Link to={`/${group}/${tool.pathname}`}>
-                        {tool.title}
+                        {tool.shortTitle}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
