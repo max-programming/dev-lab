@@ -6,6 +6,8 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import rootCss from "@/root.css?url";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -41,8 +43,14 @@ function RootDocument({ children }: PropsWithChildren) {
         <HeadContent />
       </head>
       <body>
-        {children}
-        <Scripts />
+        <SidebarProvider>
+          <AppSidebar />
+          <main>
+            <SidebarTrigger />
+            {children}
+          </main>
+          <Scripts />
+        </SidebarProvider>
       </body>
     </html>
   );
