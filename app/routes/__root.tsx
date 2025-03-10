@@ -5,8 +5,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import rootCss from "@/root.css?url";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import appCss from "@/styles/app.css?url";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
 export const Route = createRootRoute({
@@ -23,7 +23,7 @@ export const Route = createRootRoute({
         title: "DevLab",
       },
     ],
-    links: [{ rel: "stylesheet", href: rootCss }],
+    links: [{ rel: "stylesheet", href: appCss }],
     scripts: [
       {
         defer: true,
