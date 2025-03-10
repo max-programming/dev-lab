@@ -17,7 +17,7 @@ import {
 } from "./ui/collapsible";
 import { Link, useLocation } from "@tanstack/react-router";
 import { tools, type ToolName } from "@/lib/tools";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Home } from "lucide-react";
 
 const sidebarGroups = Object.keys(tools) as ToolName[];
 
@@ -35,15 +35,18 @@ export function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/"}>
-                  <Link to="/">All Tools</Link>
+                  <Link to="/" className="flex items-center">
+                    <Home />
+                    All Tools
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
         {sidebarGroups.map(group => (
-          <Collapsible defaultOpen className="group/collapsible">
-            <SidebarGroup key={group}>
+          <Collapsible defaultOpen key={group} className="group/collapsible">
+            <SidebarGroup>
               <SidebarGroupLabel asChild className="capitalize">
                 <CollapsibleTrigger>
                   {group}
@@ -56,12 +59,15 @@ export function AppSidebar() {
                     {tools[group].map(tool => {
                       const toPath = `/${group}/${tool.pathname}`;
                       return (
-                        <SidebarMenuItem key={tool.pathname}>
+                        <SidebarMenuItem key={`${group}-${tool.pathname}`}>
                           <SidebarMenuButton
                             asChild
                             isActive={toPath === pathname}
                           >
-                            <Link to={toPath}>{tool.shortTitle}</Link>
+                            <Link to={toPath} className="flex items-center">
+                              {tool.icon && <tool.icon />}
+                              {tool.shortTitle}
+                            </Link>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       );

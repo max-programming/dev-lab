@@ -28,8 +28,8 @@ function ToolsLayoutComponent() {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold">{tool.title}</h1>
-      <div className="mt-4">
+      <h1 className="text-3xl font-bold mt-2">{tool.title}</h1>
+      <div className="flex flex-col gap-y-5 h-full mt-5">
         <Outlet />
       </div>
     </div>

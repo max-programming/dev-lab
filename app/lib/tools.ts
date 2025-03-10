@@ -1,8 +1,11 @@
-export type ToolName = "converters";
+import { Clock, FileSliders, Hash } from "lucide-react";
+
+export type ToolName = "converters" | "generators";
 
 export const tools = {
   converters: [
     {
+      icon: Clock,
       shortTitle: "CRON Parser",
       title: "CRON Expression Parser",
       pathname: "cron-parser",
@@ -22,6 +25,7 @@ export const tools = {
     //     "Convert a JSON array to tabular format, export to CSV or TSV",
     // },
     {
+      icon: FileSliders,
       shortTitle: "JSON <> YAML",
       title: "JSON <> YAML Converter",
       pathname: "json-yaml",
@@ -36,6 +40,7 @@ export const tools = {
   ],
   generators: [
     {
+      icon: Hash,
       shortTitle: "UUID",
       title: "UUID Generator",
       pathname: "uuid",

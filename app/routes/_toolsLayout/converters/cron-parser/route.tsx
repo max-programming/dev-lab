@@ -11,10 +11,10 @@ export const Route = createFileRoute(
 
 function CronParserPage() {
   return (
-    <div id="cron-parser" className="flex flex-col gap-y-5 h-full">
+    <>
       <Configuration />
       <CronInput />
       <CronOutput />
-    </div>
+    </>
   );
 }

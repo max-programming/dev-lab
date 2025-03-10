@@ -10,9 +10,9 @@ export const Route = createFileRoute(
 
 function JsonYamlPage() {
   return (
-    <div id="json-yaml-converter" className="flex flex-col gap-y-5 h-full">
+    <>
       <Configuration />
       <JsonYamlInputOutput />
-    </div>
+    </>
   );
 }

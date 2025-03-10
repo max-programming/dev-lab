@@ -14,7 +14,7 @@ function UUIDGeneratorPage() {
   const { uuidCount, generateUUIDs, setUUIDCount } = useStore(uuidStore);
 
   return (
-    <div id="uuid-generator" className="flex flex-col gap-y-5 h-full">
+    <>
       <Configuration />
       <section>
         <h3 className="text-lg font-semibold">Generate</h3>
@@ -31,6 +31,6 @@ function UUIDGeneratorPage() {
         </div>
       </section>
       <UUIDOutput />
-    </div>
+    </>
   );
 }
