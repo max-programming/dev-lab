@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, type buttonVariants } from "@/components/ui/button";
-import { Copy } from "lucide-react";
+import { CopyIcon } from "lucide-react";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import type { VariantProps } from "class-variance-authority";
 
@@ -10,7 +10,6 @@ interface CopyButtonProps extends VariantProps<typeof buttonVariants> {
 
 export function CopyButton({
   value,
-  variant = "outline",
   ...props
 }: React.ComponentProps<"button"> & CopyButtonProps) {
   const [, copy] = useCopyToClipboard();
@@ -27,8 +26,8 @@ export function CopyButton({
   }
 
   return (
-    <Button onClick={handleCopy} variant={variant} {...props}>
-      <Copy className="mr-2 h-4 w-4" /> {copied ? "Copied!" : "Copy"}
+    <Button onClick={handleCopy} variant="outline" {...props}>
+      <CopyIcon className="mr-2 h-4 w-4" /> {copied ? "Copied!" : "Copy"}
     </Button>
   );
 }

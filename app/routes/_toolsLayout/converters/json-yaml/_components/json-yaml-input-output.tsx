@@ -1,12 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { ClipboardPaste, Expand, File, Save, X } from "lucide-react";
+import { ClipboardPaste, Expand } from "lucide-react";
 import { jsonYamlStore } from "../json-yaml.store";
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/components/buttons/copy-button";
+import { ClearButton } from "@/components/buttons/clear-button";
+import { OpenFileButton } from "@/components/buttons/open-file-button";
+import { SaveFileButton } from "@/components/buttons/save-file-button";
+import { PasteButton } from "@/components/buttons/paste-button";
 
 export function JsonYamlInputOutput() {
-  const { code, setCode, convertedCode } = useStore(jsonYamlStore);
+  const { code, setCode, convertedCode, config } = useStore(jsonYamlStore);
 
   return (
     <section className="flex gap-5">
@@ -14,15 +18,9 @@ export function JsonYamlInputOutput() {
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold">Input</h3>
           <div className="flex space-x-2">
-            <Button variant="outline">
-              <ClipboardPaste /> Paste
-            </Button>
-            <Button variant="outline" size="icon" title="Open a text document">
-              <File />
-            </Button>
-            <Button variant="outline" size="icon" title="Clear">
-              <X />
-            </Button>
+            <PasteButton onClipboardPaste={setCode} />
+            <OpenFileButton onOpenFile={setCode} />
+            <ClearButton onClear={() => setCode("")} />
           </div>
         </div>
         <Textarea
@@ -35,9 +33,10 @@ export function JsonYamlInputOutput() {
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold">Output</h3>
           <div className="flex space-x-2">
-            <Button variant="outline" size="icon" title="Save as...">
-              <Save />
-            </Button>
+            <SaveFileButton
+              fileType={config.conversion === "json-yaml" ? "yaml" : "json"}
+              content={convertedCode}
+            />
             <CopyButton value={convertedCode} />
             <Button variant="outline" size="icon" title="Expand">
               <Expand />

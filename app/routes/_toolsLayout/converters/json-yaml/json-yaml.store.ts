@@ -1,3 +1,4 @@
+import { removeJSONComments } from "@/lib/utils";
 import { Exome } from "exome";
 import jsonYaml from "js-yaml";
 
@@ -39,9 +40,10 @@ export class JsonYamlStore extends Exome {
     if (!this.code) return;
     if (this.config.conversion === "json-yaml") {
       try {
-        this.convertedCode = jsonYaml.dump(JSON.parse(this.code), {
-          indent: this.config.indentation,
-        });
+        this.convertedCode = jsonYaml.dump(
+          JSON.parse(removeJSONComments(this.code)),
+          { indent: this.config.indentation }
+        );
       } catch (error) {
         this.convertedCode = "Invalid JSON";
       }

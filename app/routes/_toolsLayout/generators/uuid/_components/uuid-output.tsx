@@ -1,9 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { Save } from "lucide-react";
 import { uuidStore } from "../uuid.store";
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/components/buttons/copy-button";
+import { SaveFileButton } from "@/components/buttons/save-file-button";
 
 export function UUIDOutput() {
   const { uuids } = useStore(uuidStore);
@@ -13,9 +12,7 @@ export function UUIDOutput() {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold">UUID(s)</h3>
         <div className="flex space-x-2">
-          <Button variant="outline" size="icon" title="Save as">
-            <Save />
-          </Button>
+          <SaveFileButton fileType="txt" content={uuids} />
           <CopyButton value={uuids} />
         </div>
       </div>

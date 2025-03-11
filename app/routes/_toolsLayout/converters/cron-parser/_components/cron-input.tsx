@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { AlertCircle, ClipboardPaste, File, Save, X } from "lucide-react";
+import { AlertCircle, ClipboardPaste, File } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useStore } from "exome/react";
 import { cronParserStore } from "../cron-parser.store";
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/components/buttons/copy-button";
+import { ClearButton } from "@/components/buttons/clear-button";
+import { SaveFileButton } from "@/components/buttons/save-file-button";
+import { OpenFileButton } from "@/components/buttons/open-file-button";
+import { PasteButton } from "@/components/buttons/paste-button";
 
 export function CronInput() {
   const { cronExpression, setCronExpression, cronExpressionError } =
@@ -16,24 +20,11 @@ export function CronInput() {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold">CRON Expression to parse</h3>
         <div className="flex space-x-2">
-          <Button variant="outline">
-            <ClipboardPaste /> Paste
-          </Button>
-          <Button size="icon" variant="outline" title="Open a text document">
-            <File />
-          </Button>
-          <Button
-            size="icon"
-            variant="outline"
-            title="Clear"
-            onClick={() => setCronExpression("")}
-          >
-            <X />
-          </Button>
+          <PasteButton onClipboardPaste={setCronExpression} />
+          <OpenFileButton onOpenFile={setCronExpression} />
+          <ClearButton onClear={() => setCronExpression("")} />
           <Separator orientation="vertical" />
-          <Button variant="outline" size="icon" title="Save as">
-            <Save />
-          </Button>
+          <SaveFileButton fileType="txt" content={cronExpression} />
           <CopyButton value={cronExpression} />
         </div>
       </div>
