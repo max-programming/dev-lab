@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as toolsLayoutRouteImport } from './routes/_toolsLayout/route'
 import { Route as toolsLayoutGeneratorsUuidRouteImport } from './routes/_toolsLayout/generators/uuid/route'
+import { Route as toolsLayoutGeneratorsPasswordRouteImport } from './routes/_toolsLayout/generators/password/route'
 import { Route as toolsLayoutConvertersJsonYamlRouteImport } from './routes/_toolsLayout/converters/json-yaml/route'
 import { Route as toolsLayoutConvertersCronParserRouteImport } from './routes/_toolsLayout/converters/cron-parser/route'
 
@@ -34,6 +35,13 @@ const toolsLayoutGeneratorsUuidRouteRoute =
   toolsLayoutGeneratorsUuidRouteImport.update({
     id: '/generators/uuid',
     path: '/generators/uuid',
+    getParentRoute: () => toolsLayoutRouteRoute,
+  } as any)
+
+const toolsLayoutGeneratorsPasswordRouteRoute =
+  toolsLayoutGeneratorsPasswordRouteImport.update({
+    id: '/generators/password',
+    path: '/generators/password',
     getParentRoute: () => toolsLayoutRouteRoute,
   } as any)
 
@@ -83,6 +91,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof toolsLayoutConvertersJsonYamlRouteImport
       parentRoute: typeof toolsLayoutRouteImport
     }
+    '/_toolsLayout/_route/generators/password': {
+      id: '/_toolsLayout/_route/generators/password'
+      path: '/generators/password'
+      fullPath: '/generators/password'
+      preLoaderRoute: typeof toolsLayoutGeneratorsPasswordRouteImport
+      parentRoute: typeof toolsLayoutRouteImport
+    }
     '/_toolsLayout/_route/generators/uuid': {
       id: '/_toolsLayout/_route/generators/uuid'
       path: '/generators/uuid'
@@ -98,6 +113,7 @@ declare module '@tanstack/react-router' {
 interface toolsLayoutRouteRouteChildren {
   toolsLayoutConvertersCronParserRouteRoute: typeof toolsLayoutConvertersCronParserRouteRoute
   toolsLayoutConvertersJsonYamlRouteRoute: typeof toolsLayoutConvertersJsonYamlRouteRoute
+  toolsLayoutGeneratorsPasswordRouteRoute: typeof toolsLayoutGeneratorsPasswordRouteRoute
   toolsLayoutGeneratorsUuidRouteRoute: typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
@@ -106,6 +122,8 @@ const toolsLayoutRouteRouteChildren: toolsLayoutRouteRouteChildren = {
     toolsLayoutConvertersCronParserRouteRoute,
   toolsLayoutConvertersJsonYamlRouteRoute:
     toolsLayoutConvertersJsonYamlRouteRoute,
+  toolsLayoutGeneratorsPasswordRouteRoute:
+    toolsLayoutGeneratorsPasswordRouteRoute,
   toolsLayoutGeneratorsUuidRouteRoute: toolsLayoutGeneratorsUuidRouteRoute,
 }
 
@@ -117,6 +135,7 @@ export interface FileRoutesByFullPath {
   '': typeof toolsLayoutRouteRouteWithChildren
   '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
   '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
+  '/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
   '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
@@ -125,6 +144,7 @@ export interface FileRoutesByTo {
   '': typeof toolsLayoutRouteRouteWithChildren
   '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
   '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
+  '/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
   '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
@@ -134,6 +154,7 @@ export interface FileRoutesById {
   '/_toolsLayout/_route': typeof toolsLayoutRouteRouteWithChildren
   '/_toolsLayout/_route/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
   '/_toolsLayout/_route/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
+  '/_toolsLayout/_route/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
   '/_toolsLayout/_route/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
 
@@ -144,6 +165,7 @@ export interface FileRouteTypes {
     | ''
     | '/converters/cron-parser'
     | '/converters/json-yaml'
+    | '/generators/password'
     | '/generators/uuid'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -151,6 +173,7 @@ export interface FileRouteTypes {
     | ''
     | '/converters/cron-parser'
     | '/converters/json-yaml'
+    | '/generators/password'
     | '/generators/uuid'
   id:
     | '__root__'
@@ -158,6 +181,7 @@ export interface FileRouteTypes {
     | '/_toolsLayout/_route'
     | '/_toolsLayout/_route/converters/cron-parser'
     | '/_toolsLayout/_route/converters/json-yaml'
+    | '/_toolsLayout/_route/generators/password'
     | '/_toolsLayout/_route/generators/uuid'
   fileRoutesById: FileRoutesById
 }
@@ -194,6 +218,7 @@ export const routeTree = rootRoute
       "children": [
         "/_toolsLayout/_route/converters/cron-parser",
         "/_toolsLayout/_route/converters/json-yaml",
+        "/_toolsLayout/_route/generators/password",
         "/_toolsLayout/_route/generators/uuid"
       ]
     },
@@ -203,6 +228,10 @@ export const routeTree = rootRoute
     },
     "/_toolsLayout/_route/converters/json-yaml": {
       "filePath": "_toolsLayout/converters/json-yaml/route.tsx",
+      "parent": "/_toolsLayout/_route"
+    },
+    "/_toolsLayout/_route/generators/password": {
+      "filePath": "_toolsLayout/generators/password/route.tsx",
       "parent": "/_toolsLayout/_route"
     },
     "/_toolsLayout/_route/generators/uuid": {

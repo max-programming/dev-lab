@@ -37,6 +37,7 @@ DevLab includes various tools categorized for different needs:
 
 ### Generators
 - [🆔 UUID Generator - Generate various UUID/GUID formats (v1, v4, v7)](https://devlab.usmans.me/generators/uuid)
+- [🔑 Password Generator - Generate random passwords](https://devlab.usmans.me/generators/password)
 - _More generators coming soon!_
 
 *More tools are being added regularly!*

@@ -1,4 +1,4 @@
-import { Clock, FileSliders, Hash } from "lucide-react";
+import { Clock, FileSliders, RectangleEllipsis, Hash } from "lucide-react";
 
 export type ToolName = "converters" | "generators";
 
@@ -39,6 +39,13 @@ export const tools = {
     // },
   ],
   generators: [
+    {
+      icon: RectangleEllipsis,
+      shortTitle: "Password",
+      title: "Password Generator",
+      pathname: "password",
+      description: "Generate random passwords",
+    },
     {
       icon: Hash,
       shortTitle: "UUID",
