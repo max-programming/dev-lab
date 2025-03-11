@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { Copy, Save } from "lucide-react";
+import { Save } from "lucide-react";
 import { passwordStore } from "../password.store";
+import { CopyButton } from "@/components/copy-button";
 
 export function PasswordOutput() {
   const { passwords } = useStore(passwordStore);
@@ -15,9 +16,7 @@ export function PasswordOutput() {
           <Button variant="outline" size="icon" title="Save as">
             <Save />
           </Button>
-          <Button variant="outline">
-            <Copy /> Copy
-          </Button>
+          <CopyButton value={passwords} />
         </div>
       </div>
       <Textarea className="mt-2 font-geist-mono" value={passwords} readOnly />

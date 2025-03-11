@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { ClipboardPaste, Copy, Expand, File, Save, X } from "lucide-react";
+import { ClipboardPaste, Expand, File, Save, X } from "lucide-react";
 import { jsonYamlStore } from "../json-yaml.store";
+import { CopyButton } from "@/components/copy-button";
 
 export function JsonYamlInputOutput() {
   const { code, setCode, convertedCode } = useStore(jsonYamlStore);
@@ -37,9 +38,7 @@ export function JsonYamlInputOutput() {
             <Button variant="outline" size="icon" title="Save as...">
               <Save />
             </Button>
-            <Button variant="outline">
-              <Copy /> Copy
-            </Button>
+            <CopyButton value={convertedCode} />
             <Button variant="outline" size="icon" title="Expand">
               <Expand />
             </Button>

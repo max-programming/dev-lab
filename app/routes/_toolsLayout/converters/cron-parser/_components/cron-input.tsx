@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { AlertCircle, ClipboardPaste, Copy, File, Save, X } from "lucide-react";
+import { AlertCircle, ClipboardPaste, File, Save, X } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useStore } from "exome/react";
 import { cronParserStore } from "../cron-parser.store";
+import { CopyButton } from "@/components/copy-button";
 
 export function CronInput() {
   const { cronExpression, setCronExpression, cronExpressionError } =
@@ -33,9 +34,7 @@ export function CronInput() {
           <Button variant="outline" size="icon" title="Save as">
             <Save />
           </Button>
-          <Button variant="outline">
-            <Copy /> Copy
-          </Button>
+          <CopyButton value={cronExpression} />
         </div>
       </div>
       <Input

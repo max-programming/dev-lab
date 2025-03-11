@@ -2,8 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { Save, Copy } from "lucide-react";
+import { Save } from "lucide-react";
 import { cronParserStore } from "../cron-parser.store";
+import { CopyButton } from "@/components/copy-button";
 
 export function CronOutput() {
   const { cronDescription, nextScheduledDates } = useStore(cronParserStore);
@@ -17,9 +18,7 @@ export function CronOutput() {
             <Button variant="outline" size="icon" title="Save as">
               <Save />
             </Button>
-            <Button variant="outline">
-              <Copy /> Copy
-            </Button>
+            <CopyButton value={cronDescription} />
           </div>
         </div>
         <Input
@@ -35,9 +34,7 @@ export function CronOutput() {
             <Button variant="outline" size="icon" title="Save as">
               <Save />
             </Button>
-            <Button variant="outline">
-              <Copy /> Copy
-            </Button>
+            <CopyButton value={nextScheduledDates} />
           </div>
         </div>
         <Textarea
