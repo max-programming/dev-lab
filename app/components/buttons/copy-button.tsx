@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, type buttonVariants } from "@/components/ui/button";
 import { CopyIcon } from "lucide-react";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useCopyToClipboard } from "usehooks-ts";
 import type { VariantProps } from "class-variance-authority";
 
 interface CopyButtonProps extends VariantProps<typeof buttonVariants> {

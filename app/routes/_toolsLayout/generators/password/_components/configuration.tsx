@@ -28,7 +28,7 @@ export function Configuration() {
       <div className="mt-2 flex flex-col space-y-2">
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <CollapsibleTrigger asChild>
-            <ConfigurationOption className="hover:bg-gray-100 cursor-pointer">
+            <ConfigurationOption className="cursor-pointer hover:bg-muted/50">
               <ConfigurationOptionContent>
                 <ConfigurationOptionInfo
                   title="Length"
