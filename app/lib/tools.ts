@@ -1,4 +1,10 @@
-import { Clock, FileSliders, RectangleEllipsis, Hash } from "lucide-react";
+import {
+  Clock,
+  FileSliders,
+  RectangleEllipsis,
+  Hash,
+  Binary,
+} from "lucide-react";
 
 export type ToolName = "converters" | "generators";
 
@@ -31,12 +37,13 @@ export const tools = {
       pathname: "json-yaml",
       description: "Convert JSON data to YAML and vice versa",
     },
-    // {
-    //   shortTitle: "Number Base",
-    //   title: "Number Base Converter",
-    //   pathname: "number-base",
-    //   description: "Convert numbers from one base to another",
-    // },
+    {
+      icon: Binary,
+      shortTitle: "Number Base",
+      title: "Number Base Converter",
+      pathname: "number-base",
+      description: "Convert numbers from one base to another",
+    },
   ],
   generators: [
     {

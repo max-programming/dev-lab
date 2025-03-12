@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as toolsLayoutRouteImport } from './routes/_toolsLayout/route'
 import { Route as toolsLayoutGeneratorsUuidRouteImport } from './routes/_toolsLayout/generators/uuid/route'
 import { Route as toolsLayoutGeneratorsPasswordRouteImport } from './routes/_toolsLayout/generators/password/route'
+import { Route as toolsLayoutConvertersNumberBaseRouteImport } from './routes/_toolsLayout/converters/number-base/route'
 import { Route as toolsLayoutConvertersJsonYamlRouteImport } from './routes/_toolsLayout/converters/json-yaml/route'
 import { Route as toolsLayoutConvertersCronParserRouteImport } from './routes/_toolsLayout/converters/cron-parser/route'
 
@@ -42,6 +43,13 @@ const toolsLayoutGeneratorsPasswordRouteRoute =
   toolsLayoutGeneratorsPasswordRouteImport.update({
     id: '/generators/password',
     path: '/generators/password',
+    getParentRoute: () => toolsLayoutRouteRoute,
+  } as any)
+
+const toolsLayoutConvertersNumberBaseRouteRoute =
+  toolsLayoutConvertersNumberBaseRouteImport.update({
+    id: '/converters/number-base',
+    path: '/converters/number-base',
     getParentRoute: () => toolsLayoutRouteRoute,
   } as any)
 
@@ -91,6 +99,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof toolsLayoutConvertersJsonYamlRouteImport
       parentRoute: typeof toolsLayoutRouteImport
     }
+    '/_toolsLayout/_route/converters/number-base': {
+      id: '/_toolsLayout/_route/converters/number-base'
+      path: '/converters/number-base'
+      fullPath: '/converters/number-base'
+      preLoaderRoute: typeof toolsLayoutConvertersNumberBaseRouteImport
+      parentRoute: typeof toolsLayoutRouteImport
+    }
     '/_toolsLayout/_route/generators/password': {
       id: '/_toolsLayout/_route/generators/password'
       path: '/generators/password'
@@ -113,6 +128,7 @@ declare module '@tanstack/react-router' {
 interface toolsLayoutRouteRouteChildren {
   toolsLayoutConvertersCronParserRouteRoute: typeof toolsLayoutConvertersCronParserRouteRoute
   toolsLayoutConvertersJsonYamlRouteRoute: typeof toolsLayoutConvertersJsonYamlRouteRoute
+  toolsLayoutConvertersNumberBaseRouteRoute: typeof toolsLayoutConvertersNumberBaseRouteRoute
   toolsLayoutGeneratorsPasswordRouteRoute: typeof toolsLayoutGeneratorsPasswordRouteRoute
   toolsLayoutGeneratorsUuidRouteRoute: typeof toolsLayoutGeneratorsUuidRouteRoute
 }
@@ -122,6 +138,8 @@ const toolsLayoutRouteRouteChildren: toolsLayoutRouteRouteChildren = {
     toolsLayoutConvertersCronParserRouteRoute,
   toolsLayoutConvertersJsonYamlRouteRoute:
     toolsLayoutConvertersJsonYamlRouteRoute,
+  toolsLayoutConvertersNumberBaseRouteRoute:
+    toolsLayoutConvertersNumberBaseRouteRoute,
   toolsLayoutGeneratorsPasswordRouteRoute:
     toolsLayoutGeneratorsPasswordRouteRoute,
   toolsLayoutGeneratorsUuidRouteRoute: toolsLayoutGeneratorsUuidRouteRoute,
@@ -135,6 +153,7 @@ export interface FileRoutesByFullPath {
   '': typeof toolsLayoutRouteRouteWithChildren
   '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
   '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
+  '/converters/number-base': typeof toolsLayoutConvertersNumberBaseRouteRoute
   '/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
   '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
@@ -144,6 +163,7 @@ export interface FileRoutesByTo {
   '': typeof toolsLayoutRouteRouteWithChildren
   '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
   '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
+  '/converters/number-base': typeof toolsLayoutConvertersNumberBaseRouteRoute
   '/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
   '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
@@ -154,6 +174,7 @@ export interface FileRoutesById {
   '/_toolsLayout/_route': typeof toolsLayoutRouteRouteWithChildren
   '/_toolsLayout/_route/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
   '/_toolsLayout/_route/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
+  '/_toolsLayout/_route/converters/number-base': typeof toolsLayoutConvertersNumberBaseRouteRoute
   '/_toolsLayout/_route/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
   '/_toolsLayout/_route/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
 }
@@ -165,6 +186,7 @@ export interface FileRouteTypes {
     | ''
     | '/converters/cron-parser'
     | '/converters/json-yaml'
+    | '/converters/number-base'
     | '/generators/password'
     | '/generators/uuid'
   fileRoutesByTo: FileRoutesByTo
@@ -173,6 +195,7 @@ export interface FileRouteTypes {
     | ''
     | '/converters/cron-parser'
     | '/converters/json-yaml'
+    | '/converters/number-base'
     | '/generators/password'
     | '/generators/uuid'
   id:
@@ -181,6 +204,7 @@ export interface FileRouteTypes {
     | '/_toolsLayout/_route'
     | '/_toolsLayout/_route/converters/cron-parser'
     | '/_toolsLayout/_route/converters/json-yaml'
+    | '/_toolsLayout/_route/converters/number-base'
     | '/_toolsLayout/_route/generators/password'
     | '/_toolsLayout/_route/generators/uuid'
   fileRoutesById: FileRoutesById
@@ -218,6 +242,7 @@ export const routeTree = rootRoute
       "children": [
         "/_toolsLayout/_route/converters/cron-parser",
         "/_toolsLayout/_route/converters/json-yaml",
+        "/_toolsLayout/_route/converters/number-base",
         "/_toolsLayout/_route/generators/password",
         "/_toolsLayout/_route/generators/uuid"
       ]
@@ -228,6 +253,10 @@ export const routeTree = rootRoute
     },
     "/_toolsLayout/_route/converters/json-yaml": {
       "filePath": "_toolsLayout/converters/json-yaml/route.tsx",
+      "parent": "/_toolsLayout/_route"
+    },
+    "/_toolsLayout/_route/converters/number-base": {
+      "filePath": "_toolsLayout/converters/number-base/route.tsx",
       "parent": "/_toolsLayout/_route"
     },
     "/_toolsLayout/_route/generators/password": {

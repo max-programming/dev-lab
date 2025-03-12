@@ -33,6 +33,7 @@ DevLab includes various tools categorized for different needs:
 ### Converters
 - [🕒 CRON Expression Parser - Parse cron expressions to get scheduled dates](https://devlab.usmans.me/converters/cron-parser)
 - [🗂️ JSON to YAML Converter - Convert JSON data to YAML format and vice versa](https://devlab.usmans.me/converters/json-yaml)
+- [#️⃣ Number Base Converter - Convert numbers from one base to another](https://devlab.usmans.me/converters/number-base)
 - _More converters coming soon!_
 
 ### Generators
