@@ -1,6 +1,5 @@
 import { useStore } from "exome/react";
 import { ArrowRightLeft, Space } from "lucide-react";
-import { jsonYamlStore } from "../json-yaml.store";
 import {
   Select,
   SelectContent,
@@ -14,6 +13,7 @@ import {
   ConfigurationOptionContent,
   ConfigurationOptionInfo,
 } from "@/components/configuration-option";
+import { jsonYamlStore } from "@/stores/converters/json-yaml.store";
 
 export function Configuration() {
   const { config, updateConfig } = useStore(jsonYamlStore);

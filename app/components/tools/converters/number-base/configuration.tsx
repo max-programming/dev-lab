@@ -1,6 +1,6 @@
 import { useStore } from "exome/react";
 import { Brain, CaseSensitive } from "lucide-react";
-import { numberBaseStore } from "../number-base.store";
+import { numberBaseStore } from "@/stores/converters/number-base.store";
 import {
   ConfigurationOption,
   ConfigurationOptionAction,

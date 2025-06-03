@@ -4,12 +4,12 @@ import { Separator } from "@/components/ui/separator";
 import { AlertCircle, ClipboardPaste, File } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useStore } from "exome/react";
-import { cronParserStore } from "../cron-parser.store";
 import { CopyButton } from "@/components/buttons/copy-button";
 import { ClearButton } from "@/components/buttons/clear-button";
 import { SaveFileButton } from "@/components/buttons/save-file-button";
 import { OpenFileButton } from "@/components/buttons/open-file-button";
 import { PasteButton } from "@/components/buttons/paste-button";
+import { cronParserStore } from "@/stores/converters/cron-parser.store";
 
 export function CronInput() {
   const { cronExpression, setCronExpression, cronExpressionError } =

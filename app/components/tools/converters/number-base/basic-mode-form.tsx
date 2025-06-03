@@ -1,5 +1,5 @@
 import { useStore } from "exome/react";
-import { numberBaseStore } from "../number-base.store";
+import { numberBaseStore } from "@/stores/converters/number-base.store";
 import { BasicInput } from "./basic-input";
 
 export function BasicModeForm() {

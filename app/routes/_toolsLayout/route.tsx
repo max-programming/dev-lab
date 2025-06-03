@@ -1,7 +1,7 @@
 import { tools, type ToolName } from "@/lib/tools";
 import { createFileRoute, notFound, Outlet } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_toolsLayout/_route")({
+export const Route = createFileRoute("/_toolsLayout")({
   component: ToolsLayoutComponent,
   loader(ctx) {
     const toolGroup = ctx.location.pathname.split("/").at(-2) as ToolName;

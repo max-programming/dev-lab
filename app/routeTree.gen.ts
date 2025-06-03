@@ -11,15 +11,20 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ToolsLayoutRouteImport } from './routes/_toolsLayout/route'
 import { Route as IndexImport } from './routes/index'
-import { Route as toolsLayoutRouteImport } from './routes/_toolsLayout/route'
-import { Route as toolsLayoutGeneratorsUuidRouteImport } from './routes/_toolsLayout/generators/uuid/route'
-import { Route as toolsLayoutGeneratorsPasswordRouteImport } from './routes/_toolsLayout/generators/password/route'
-import { Route as toolsLayoutConvertersNumberBaseRouteImport } from './routes/_toolsLayout/converters/number-base/route'
-import { Route as toolsLayoutConvertersJsonYamlRouteImport } from './routes/_toolsLayout/converters/json-yaml/route'
-import { Route as toolsLayoutConvertersCronParserRouteImport } from './routes/_toolsLayout/converters/cron-parser/route'
+import { Route as ToolsLayoutGeneratorsUuidImport } from './routes/_toolsLayout/generators/uuid'
+import { Route as ToolsLayoutGeneratorsPasswordImport } from './routes/_toolsLayout/generators/password'
+import { Route as ToolsLayoutConvertersNumberBaseImport } from './routes/_toolsLayout/converters/number-base'
+import { Route as ToolsLayoutConvertersJsonYamlImport } from './routes/_toolsLayout/converters/json-yaml'
+import { Route as ToolsLayoutConvertersCronParserImport } from './routes/_toolsLayout/converters/cron-parser'
 
 // Create/Update Routes
+
+const ToolsLayoutRouteRoute = ToolsLayoutRouteImport.update({
+  id: '/_toolsLayout',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -27,44 +32,38 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const toolsLayoutRouteRoute = toolsLayoutRouteImport.update({
-  id: '/_toolsLayout/_route',
-  getParentRoute: () => rootRoute,
+const ToolsLayoutGeneratorsUuidRoute = ToolsLayoutGeneratorsUuidImport.update({
+  id: '/generators/uuid',
+  path: '/generators/uuid',
+  getParentRoute: () => ToolsLayoutRouteRoute,
 } as any)
 
-const toolsLayoutGeneratorsUuidRouteRoute =
-  toolsLayoutGeneratorsUuidRouteImport.update({
-    id: '/generators/uuid',
-    path: '/generators/uuid',
-    getParentRoute: () => toolsLayoutRouteRoute,
-  } as any)
-
-const toolsLayoutGeneratorsPasswordRouteRoute =
-  toolsLayoutGeneratorsPasswordRouteImport.update({
+const ToolsLayoutGeneratorsPasswordRoute =
+  ToolsLayoutGeneratorsPasswordImport.update({
     id: '/generators/password',
     path: '/generators/password',
-    getParentRoute: () => toolsLayoutRouteRoute,
+    getParentRoute: () => ToolsLayoutRouteRoute,
   } as any)
 
-const toolsLayoutConvertersNumberBaseRouteRoute =
-  toolsLayoutConvertersNumberBaseRouteImport.update({
+const ToolsLayoutConvertersNumberBaseRoute =
+  ToolsLayoutConvertersNumberBaseImport.update({
     id: '/converters/number-base',
     path: '/converters/number-base',
-    getParentRoute: () => toolsLayoutRouteRoute,
+    getParentRoute: () => ToolsLayoutRouteRoute,
   } as any)
 
-const toolsLayoutConvertersJsonYamlRouteRoute =
-  toolsLayoutConvertersJsonYamlRouteImport.update({
+const ToolsLayoutConvertersJsonYamlRoute =
+  ToolsLayoutConvertersJsonYamlImport.update({
     id: '/converters/json-yaml',
     path: '/converters/json-yaml',
-    getParentRoute: () => toolsLayoutRouteRoute,
+    getParentRoute: () => ToolsLayoutRouteRoute,
   } as any)
 
-const toolsLayoutConvertersCronParserRouteRoute =
-  toolsLayoutConvertersCronParserRouteImport.update({
+const ToolsLayoutConvertersCronParserRoute =
+  ToolsLayoutConvertersCronParserImport.update({
     id: '/converters/cron-parser',
     path: '/converters/cron-parser',
-    getParentRoute: () => toolsLayoutRouteRoute,
+    getParentRoute: () => ToolsLayoutRouteRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -78,105 +77,101 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/_toolsLayout/_route': {
-      id: '/_toolsLayout/_route'
+    '/_toolsLayout': {
+      id: '/_toolsLayout'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof toolsLayoutRouteImport
+      preLoaderRoute: typeof ToolsLayoutRouteImport
       parentRoute: typeof rootRoute
     }
-    '/_toolsLayout/_route/converters/cron-parser': {
-      id: '/_toolsLayout/_route/converters/cron-parser'
+    '/_toolsLayout/converters/cron-parser': {
+      id: '/_toolsLayout/converters/cron-parser'
       path: '/converters/cron-parser'
       fullPath: '/converters/cron-parser'
-      preLoaderRoute: typeof toolsLayoutConvertersCronParserRouteImport
-      parentRoute: typeof toolsLayoutRouteImport
+      preLoaderRoute: typeof ToolsLayoutConvertersCronParserImport
+      parentRoute: typeof ToolsLayoutRouteImport
     }
-    '/_toolsLayout/_route/converters/json-yaml': {
-      id: '/_toolsLayout/_route/converters/json-yaml'
+    '/_toolsLayout/converters/json-yaml': {
+      id: '/_toolsLayout/converters/json-yaml'
       path: '/converters/json-yaml'
       fullPath: '/converters/json-yaml'
-      preLoaderRoute: typeof toolsLayoutConvertersJsonYamlRouteImport
-      parentRoute: typeof toolsLayoutRouteImport
+      preLoaderRoute: typeof ToolsLayoutConvertersJsonYamlImport
+      parentRoute: typeof ToolsLayoutRouteImport
     }
-    '/_toolsLayout/_route/converters/number-base': {
-      id: '/_toolsLayout/_route/converters/number-base'
+    '/_toolsLayout/converters/number-base': {
+      id: '/_toolsLayout/converters/number-base'
       path: '/converters/number-base'
       fullPath: '/converters/number-base'
-      preLoaderRoute: typeof toolsLayoutConvertersNumberBaseRouteImport
-      parentRoute: typeof toolsLayoutRouteImport
+      preLoaderRoute: typeof ToolsLayoutConvertersNumberBaseImport
+      parentRoute: typeof ToolsLayoutRouteImport
     }
-    '/_toolsLayout/_route/generators/password': {
-      id: '/_toolsLayout/_route/generators/password'
+    '/_toolsLayout/generators/password': {
+      id: '/_toolsLayout/generators/password'
       path: '/generators/password'
       fullPath: '/generators/password'
-      preLoaderRoute: typeof toolsLayoutGeneratorsPasswordRouteImport
-      parentRoute: typeof toolsLayoutRouteImport
+      preLoaderRoute: typeof ToolsLayoutGeneratorsPasswordImport
+      parentRoute: typeof ToolsLayoutRouteImport
     }
-    '/_toolsLayout/_route/generators/uuid': {
-      id: '/_toolsLayout/_route/generators/uuid'
+    '/_toolsLayout/generators/uuid': {
+      id: '/_toolsLayout/generators/uuid'
       path: '/generators/uuid'
       fullPath: '/generators/uuid'
-      preLoaderRoute: typeof toolsLayoutGeneratorsUuidRouteImport
-      parentRoute: typeof toolsLayoutRouteImport
+      preLoaderRoute: typeof ToolsLayoutGeneratorsUuidImport
+      parentRoute: typeof ToolsLayoutRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface toolsLayoutRouteRouteChildren {
-  toolsLayoutConvertersCronParserRouteRoute: typeof toolsLayoutConvertersCronParserRouteRoute
-  toolsLayoutConvertersJsonYamlRouteRoute: typeof toolsLayoutConvertersJsonYamlRouteRoute
-  toolsLayoutConvertersNumberBaseRouteRoute: typeof toolsLayoutConvertersNumberBaseRouteRoute
-  toolsLayoutGeneratorsPasswordRouteRoute: typeof toolsLayoutGeneratorsPasswordRouteRoute
-  toolsLayoutGeneratorsUuidRouteRoute: typeof toolsLayoutGeneratorsUuidRouteRoute
+interface ToolsLayoutRouteRouteChildren {
+  ToolsLayoutConvertersCronParserRoute: typeof ToolsLayoutConvertersCronParserRoute
+  ToolsLayoutConvertersJsonYamlRoute: typeof ToolsLayoutConvertersJsonYamlRoute
+  ToolsLayoutConvertersNumberBaseRoute: typeof ToolsLayoutConvertersNumberBaseRoute
+  ToolsLayoutGeneratorsPasswordRoute: typeof ToolsLayoutGeneratorsPasswordRoute
+  ToolsLayoutGeneratorsUuidRoute: typeof ToolsLayoutGeneratorsUuidRoute
 }
 
-const toolsLayoutRouteRouteChildren: toolsLayoutRouteRouteChildren = {
-  toolsLayoutConvertersCronParserRouteRoute:
-    toolsLayoutConvertersCronParserRouteRoute,
-  toolsLayoutConvertersJsonYamlRouteRoute:
-    toolsLayoutConvertersJsonYamlRouteRoute,
-  toolsLayoutConvertersNumberBaseRouteRoute:
-    toolsLayoutConvertersNumberBaseRouteRoute,
-  toolsLayoutGeneratorsPasswordRouteRoute:
-    toolsLayoutGeneratorsPasswordRouteRoute,
-  toolsLayoutGeneratorsUuidRouteRoute: toolsLayoutGeneratorsUuidRouteRoute,
+const ToolsLayoutRouteRouteChildren: ToolsLayoutRouteRouteChildren = {
+  ToolsLayoutConvertersCronParserRoute: ToolsLayoutConvertersCronParserRoute,
+  ToolsLayoutConvertersJsonYamlRoute: ToolsLayoutConvertersJsonYamlRoute,
+  ToolsLayoutConvertersNumberBaseRoute: ToolsLayoutConvertersNumberBaseRoute,
+  ToolsLayoutGeneratorsPasswordRoute: ToolsLayoutGeneratorsPasswordRoute,
+  ToolsLayoutGeneratorsUuidRoute: ToolsLayoutGeneratorsUuidRoute,
 }
 
-const toolsLayoutRouteRouteWithChildren =
-  toolsLayoutRouteRoute._addFileChildren(toolsLayoutRouteRouteChildren)
+const ToolsLayoutRouteRouteWithChildren =
+  ToolsLayoutRouteRoute._addFileChildren(ToolsLayoutRouteRouteChildren)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '': typeof toolsLayoutRouteRouteWithChildren
-  '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
-  '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
-  '/converters/number-base': typeof toolsLayoutConvertersNumberBaseRouteRoute
-  '/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
-  '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
+  '': typeof ToolsLayoutRouteRouteWithChildren
+  '/converters/cron-parser': typeof ToolsLayoutConvertersCronParserRoute
+  '/converters/json-yaml': typeof ToolsLayoutConvertersJsonYamlRoute
+  '/converters/number-base': typeof ToolsLayoutConvertersNumberBaseRoute
+  '/generators/password': typeof ToolsLayoutGeneratorsPasswordRoute
+  '/generators/uuid': typeof ToolsLayoutGeneratorsUuidRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '': typeof toolsLayoutRouteRouteWithChildren
-  '/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
-  '/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
-  '/converters/number-base': typeof toolsLayoutConvertersNumberBaseRouteRoute
-  '/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
-  '/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
+  '': typeof ToolsLayoutRouteRouteWithChildren
+  '/converters/cron-parser': typeof ToolsLayoutConvertersCronParserRoute
+  '/converters/json-yaml': typeof ToolsLayoutConvertersJsonYamlRoute
+  '/converters/number-base': typeof ToolsLayoutConvertersNumberBaseRoute
+  '/generators/password': typeof ToolsLayoutGeneratorsPasswordRoute
+  '/generators/uuid': typeof ToolsLayoutGeneratorsUuidRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/_toolsLayout/_route': typeof toolsLayoutRouteRouteWithChildren
-  '/_toolsLayout/_route/converters/cron-parser': typeof toolsLayoutConvertersCronParserRouteRoute
-  '/_toolsLayout/_route/converters/json-yaml': typeof toolsLayoutConvertersJsonYamlRouteRoute
-  '/_toolsLayout/_route/converters/number-base': typeof toolsLayoutConvertersNumberBaseRouteRoute
-  '/_toolsLayout/_route/generators/password': typeof toolsLayoutGeneratorsPasswordRouteRoute
-  '/_toolsLayout/_route/generators/uuid': typeof toolsLayoutGeneratorsUuidRouteRoute
+  '/_toolsLayout': typeof ToolsLayoutRouteRouteWithChildren
+  '/_toolsLayout/converters/cron-parser': typeof ToolsLayoutConvertersCronParserRoute
+  '/_toolsLayout/converters/json-yaml': typeof ToolsLayoutConvertersJsonYamlRoute
+  '/_toolsLayout/converters/number-base': typeof ToolsLayoutConvertersNumberBaseRoute
+  '/_toolsLayout/generators/password': typeof ToolsLayoutGeneratorsPasswordRoute
+  '/_toolsLayout/generators/uuid': typeof ToolsLayoutGeneratorsUuidRoute
 }
 
 export interface FileRouteTypes {
@@ -201,23 +196,23 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/_toolsLayout/_route'
-    | '/_toolsLayout/_route/converters/cron-parser'
-    | '/_toolsLayout/_route/converters/json-yaml'
-    | '/_toolsLayout/_route/converters/number-base'
-    | '/_toolsLayout/_route/generators/password'
-    | '/_toolsLayout/_route/generators/uuid'
+    | '/_toolsLayout'
+    | '/_toolsLayout/converters/cron-parser'
+    | '/_toolsLayout/converters/json-yaml'
+    | '/_toolsLayout/converters/number-base'
+    | '/_toolsLayout/generators/password'
+    | '/_toolsLayout/generators/uuid'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  toolsLayoutRouteRoute: typeof toolsLayoutRouteRouteWithChildren
+  ToolsLayoutRouteRoute: typeof ToolsLayoutRouteRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  toolsLayoutRouteRoute: toolsLayoutRouteRouteWithChildren,
+  ToolsLayoutRouteRoute: ToolsLayoutRouteRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -231,41 +226,41 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_toolsLayout/_route"
+        "/_toolsLayout"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/_toolsLayout/_route": {
+    "/_toolsLayout": {
       "filePath": "_toolsLayout/route.tsx",
       "children": [
-        "/_toolsLayout/_route/converters/cron-parser",
-        "/_toolsLayout/_route/converters/json-yaml",
-        "/_toolsLayout/_route/converters/number-base",
-        "/_toolsLayout/_route/generators/password",
-        "/_toolsLayout/_route/generators/uuid"
+        "/_toolsLayout/converters/cron-parser",
+        "/_toolsLayout/converters/json-yaml",
+        "/_toolsLayout/converters/number-base",
+        "/_toolsLayout/generators/password",
+        "/_toolsLayout/generators/uuid"
       ]
     },
-    "/_toolsLayout/_route/converters/cron-parser": {
-      "filePath": "_toolsLayout/converters/cron-parser/route.tsx",
-      "parent": "/_toolsLayout/_route"
+    "/_toolsLayout/converters/cron-parser": {
+      "filePath": "_toolsLayout/converters/cron-parser.tsx",
+      "parent": "/_toolsLayout"
     },
-    "/_toolsLayout/_route/converters/json-yaml": {
-      "filePath": "_toolsLayout/converters/json-yaml/route.tsx",
-      "parent": "/_toolsLayout/_route"
+    "/_toolsLayout/converters/json-yaml": {
+      "filePath": "_toolsLayout/converters/json-yaml.tsx",
+      "parent": "/_toolsLayout"
     },
-    "/_toolsLayout/_route/converters/number-base": {
-      "filePath": "_toolsLayout/converters/number-base/route.tsx",
-      "parent": "/_toolsLayout/_route"
+    "/_toolsLayout/converters/number-base": {
+      "filePath": "_toolsLayout/converters/number-base.tsx",
+      "parent": "/_toolsLayout"
     },
-    "/_toolsLayout/_route/generators/password": {
-      "filePath": "_toolsLayout/generators/password/route.tsx",
-      "parent": "/_toolsLayout/_route"
+    "/_toolsLayout/generators/password": {
+      "filePath": "_toolsLayout/generators/password.tsx",
+      "parent": "/_toolsLayout"
     },
-    "/_toolsLayout/_route/generators/uuid": {
-      "filePath": "_toolsLayout/generators/uuid/route.tsx",
-      "parent": "/_toolsLayout/_route"
+    "/_toolsLayout/generators/uuid": {
+      "filePath": "_toolsLayout/generators/uuid.tsx",
+      "parent": "/_toolsLayout"
     }
   }
 }

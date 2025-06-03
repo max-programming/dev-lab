@@ -1,6 +1,5 @@
 import { useStore } from "exome/react";
 import { CaseSensitive, Minus, Settings2 } from "lucide-react";
-import { uuidStore } from "../uuid.store";
 import { Switch } from "@/components/ui/switch";
 import {
   Select,
@@ -15,6 +14,7 @@ import {
   ConfigurationOptionContent,
   ConfigurationOptionInfo,
 } from "@/components/configuration-option";
+import { uuidStore } from "@/stores/generators/uuid.store";
 
 export function Configuration() {
   const { config, updateConfig } = useStore(uuidStore);

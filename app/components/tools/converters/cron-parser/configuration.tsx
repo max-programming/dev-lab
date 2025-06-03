@@ -1,7 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { useStore } from "exome/react";
 import { ListOrdered, Type } from "lucide-react";
-import { cronParserStore } from "../cron-parser.store";
 import {
   Select,
   SelectContent,
@@ -15,6 +14,7 @@ import {
   ConfigurationOptionContent,
   ConfigurationOptionInfo,
 } from "@/components/configuration-option";
+import { cronParserStore } from "@/stores/converters/cron-parser.store";
 
 export function Configuration() {
   const { config, updateConfig } = useStore(cronParserStore);

@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Configuration } from "./_components/configuration";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useStore } from "exome/react";
-import { uuidStore } from "./uuid.store";
-import { UUIDOutput } from "./_components/uuid-output";
+import { uuidStore } from "@/stores/generators/uuid.store";
+import { UUIDOutput } from "@/components/tools/generators/uuid/uuid-output";
+import { Configuration } from "@/components/tools/generators/uuid/configuration";
 
-export const Route = createFileRoute("/_toolsLayout/_route/generators/uuid")({
+export const Route = createFileRoute("/_toolsLayout/generators/uuid")({
   component: UUIDGeneratorPage,
 });
 

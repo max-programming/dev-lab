@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Configuration } from "./_components/configuration";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useStore } from "exome/react";
-import { passwordStore } from "./password.store";
-import { PasswordOutput } from "./_components/password-output";
+import { passwordStore } from "@/stores/generators/password.store";
+import { PasswordOutput } from "@/components/tools/generators/password/password-output";
+import { Configuration } from "@/components/tools/generators/password/configuration";
 
-export const Route = createFileRoute(
-  "/_toolsLayout/_route/generators/password"
-)({
+export const Route = createFileRoute("/_toolsLayout/generators/password")({
   component: PasswordGeneratorPage,
 });
 

@@ -1,8 +1,8 @@
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { uuidStore } from "../uuid.store";
 import { CopyButton } from "@/components/buttons/copy-button";
 import { SaveFileButton } from "@/components/buttons/save-file-button";
+import { uuidStore } from "@/stores/generators/uuid.store";
 
 export function UUIDOutput() {
   const { uuids } = useStore(uuidStore);

@@ -1,6 +1,5 @@
 import { useStore } from "exome/react";
 import { AlertCircle, ChevronDown, ChevronUp, Hash } from "lucide-react";
-import { passwordStore } from "../password.store";
 import { Switch } from "@/components/ui/switch";
 import {
   ConfigurationOption,
@@ -16,6 +15,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { useState } from "react";
+import { passwordStore } from "@/stores/generators/password.store";
 
 export function Configuration() {
   const { config, updateConfig, passwordError, optionsDescription } =

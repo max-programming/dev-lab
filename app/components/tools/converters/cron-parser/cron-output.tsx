@@ -1,9 +1,9 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { cronParserStore } from "../cron-parser.store";
 import { CopyButton } from "@/components/buttons/copy-button";
 import { SaveFileButton } from "@/components/buttons/save-file-button";
+import { cronParserStore } from "@/stores/converters/cron-parser.store";
 
 export function CronOutput() {
   const { cronDescription, nextScheduledDates } = useStore(cronParserStore);

@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { passwordStore } from "../password.store";
 import { CopyButton } from "@/components/buttons/copy-button";
 import { SaveFileButton } from "@/components/buttons/save-file-button";
+import { passwordStore } from "@/stores/generators/password.store";
 
 export function PasswordOutput() {
   const { passwords } = useStore(passwordStore);

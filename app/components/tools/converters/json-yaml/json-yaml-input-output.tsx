@@ -1,12 +1,12 @@
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "exome/react";
-import { jsonYamlStore } from "../json-yaml.store";
 import { CopyButton } from "@/components/buttons/copy-button";
 import { ClearButton } from "@/components/buttons/clear-button";
 import { OpenFileButton } from "@/components/buttons/open-file-button";
 import { SaveFileButton } from "@/components/buttons/save-file-button";
 import { PasteButton } from "@/components/buttons/paste-button";
 import { ExpandButton } from "@/components/buttons/expand-button";
+import { jsonYamlStore } from "@/stores/converters/json-yaml.store";
 
 export function JsonYamlInputOutput() {
   const { code, setCode, convertedCode, config } = useStore(jsonYamlStore);
